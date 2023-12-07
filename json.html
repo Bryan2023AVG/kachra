@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Json example</title>
+</head>
+<body>
+
+    <p id="para"></p>
+    
+    <script>
+        alert("Welcome "+prompt("What is your username","Bryan"));
+        //Storing json data
+        let myObj = [{"employees":["Bryan","Alex","Nathan"]},"PersonalEmail@123something.com",{"collegeId":2104020,"rollNo":36}];
+        let textJSON = JSON.stringify(myObj);
+        localStorage.setItem("storedJSON",textJSON);
+
+        //Retrieving json data
+        let retrieveText = localStorage.getItem("storedJSON");
+        let retMyObj = JSON.parse(retrieveText);
+        document.getElementsByTagName("p")[0].innerText = retMyObj[0].employees[1]+" id is "+retMyObj[2].collegeId;
+    </script>
+</body>
+
+</html>

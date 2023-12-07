@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index form</title>
+    <style>
+        Form{
+            transform-origin: left top;
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body >
+    <form name="myForm" onsubmit=" return validate()" >
+        Name:
+        <input type="text" name="fname"><br><br>
+        Age:
+        <input type="text" name="age"><br><br>
+        Select checkbox:
+        <input type="checkbox" name="cb"><br><br>
+        Select Gender:
+        Male<input type="radio" value="male" checked name="gender"> Female<input type="radio" value="female" name="gender"> <br><br>
+        Select Birthday:
+        <input type="date" name="birthdate"><br><br>
+        Select State:
+        <select name="state">
+            <option></option>
+            <option value="Goa">Goa</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+        </select>
+        <br><br>
+        Regex:
+        <input type="text" name="rege"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/Test.html"></a>
+    <a href="/exception.html"></a>
+
+
+    <script>
+        function validate(){
+            let correct= true;
+            //limit char validator
+            let fname = document.myForm.fname.value;
+            if(fname==""){
+                alert("Name cant be empty");
+                correct = false;
+                return correct;
+            }else{
+                if(!fname.match("^[a-zA-Z]{2,}$")){
+                    alert("Name must be atleast two char long ");
+                    correct = false;
+                    return correct;
+                }
+            }
+            //required field validator
+            let age = document.myForm.age.value;
+            if(age ==""){
+                alert("Age cant be empty");
+                correct = false;
+                return correct;
+            }
+            else{
+                //Number validator
+                if(document.myForm.age.value.length != 2){
+                    alert("Age must be double digit");
+                    correct = false;
+                    return correct;
+                }
+                if(isNaN(age)){
+                    alert("Age cant be alphabet");
+                    correct = false;
+                    return correct;
+                }
+            }
+
+            //Checkboxe validator
+            if(document.myForm.cb.checked == false){
+                alert("Checkboxes must be selected");
+                correct = false;
+                return correct;
+            }
+
+            //radio button checker
+            gender = document.myForm.gender.value;
+            if(gender == "male"){
+                alert("Gender must be female");
+                correct = false;
+                return correct;
+            }
+
+            //date validator
+            let dob = document.myForm.birthdate.value;
+            if(dob==""){
+                alert("Date cant be empty");
+                correct = false;
+                return correct;
+            }
+            else{
+                let execDate = dob.split("-");
+                let thisDate = new Date();
+                let thisYear = thisDate.getFullYear();
+                
+                if(thisYear - execDate[0] <= 18){
+                    alert("You are not eligible bcuz you must be over 18");
+                    correct = false;
+                    return correct;
+                }
+            }
+            
+            //DropDown Validator
+            let state = document.myForm.state.value;
+            if(state==""){
+                alert("State cannot be empty");
+                correct = false;
+                return correct;
+            }
+
+            let regeText = document.myForm.rege.value;
+            let regexmulti = /bryan/g;
+            let result = regeText.match(regexmulti);
+            if(result.length > 1){
+                alert("You cannot have multiple occurence");
+                correct = false;
+                return correct;
+            }
+
+
+            return correct;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Percentage Calculator</title>
+</head>
+<body>
+  <h1>Student Percentage Calculator</h1>
+  <form id="marksForm">
+    <label for="subject1">Subject 1:</label>
+    <input type="number" id="subject1" max="100" required><br>
+    <label for="subject2">Subject 2:</label>
+    <input type="number" id="subject2" max="100" required><br>
+    <label for="subject3">Subject 3:</label>
+    <input type="number" id="subject3" max="100" required><br>
+    <button type="button" onclick="calculatePercentage()">Calculate Percentage</button>
+  </form>
+  <p id="percentageResult"></p>
+
+  <script>
+    function calculatePercentage() {
+      const subject1 = document.getElementById('subject1').valueAsNumber;
+      const subject2 = document.getElementById('subject2').valueAsNumber;
+      const subject3 = document.getElementById('subject3').valueAsNumber;
+
+      if (subject1 && subject2 && subject3) {
+        const totalMarks = subject1 + subject2 + subject3;
+        const percentage = (totalMarks / 300) * 100;
+        document.getElementById('percentageResult').textContent = `Percentage: ${percentage}%`;
+      } else {
+        document.getElementById('percentageResult').textContent = 'Please enter marks for all subjects';
+      }
+    }
+  </script>
+</body>
+</html>

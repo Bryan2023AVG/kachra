@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exception Handling</title>
+</head>
+<body id="myBody">
+    <h4>Enter an number between 5 and 10</h4>
+    <input type="text" id="demo"><br><br>
+    <button id="bt" onclick="checkNum()">Check</button>
+    <h1>Here is an example of exception handling</h1><br>
+    <h2>Error:</h2>
+    <p id="para">
+    </p>
+
+    <script>
+       function checkNum(){
+        try{
+            let input = document.getElementById("demo").value;
+            if(input == "") throw "Input empty";
+            if(isNaN(input)) throw "Not a number";
+            if(input > 10) throw "Greater than 10";
+            if(input < 5) throw "Less than 5";
+        }
+        catch(err){
+            document.getElementById("para").style.color="red";
+            document.getElementById("para").innerText = err;
+        }
+        finally{
+            let h1 = document.createElement("h1");
+            let text = document.createTextNode("Program ended successfully");
+            h1.appendChild(text);
+            h1.style.color="blue";
+           let body =  document.getElementById("myBody");
+           body.appendChild(h1);
+
+           
+        }
+       }
+    </script>
+</body>
+</html>

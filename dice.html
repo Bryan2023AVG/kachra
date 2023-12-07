@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Dice Throw</title>
+
+   <style>
+        button{
+            height: 100px;
+            width: 200px;
+            border-radius: 10px;
+            background-color: black;
+            color: lime;
+            margin-left: 43%;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            font-size: xx-large;
+        }
+        
+        h1{
+            border: solid 2px white;
+            background-color: black;
+            padding-top: 45px;
+            padding-bottom: 45px;
+            text-align: center;
+            color: white;
+            font-size: 100px;
+            height: 100px;
+            
+        }
+
+        body{
+            background-color: grey;
+        }
+   </style>
+</head>
+<body>
+    <h1 id="dice">Dice Throw</h1>
+    <button id="td" onclick="check()">Throw Dice</button>
+
+
+    <script>
+        function check(){
+            let dice = document.getElementById("dice");
+
+            
+            let no = Math.floor(Math.random() * 6) + 1;
+
+            if(no%2==0){
+                dice.style.color = "blue";
+                dice.innerHTML = no;
+                document.getElementById("td").style.backgroundColor= "black";
+                document.getElementById("td").style.color= "lime";
+
+            }
+            else{
+                dice.style.color = "red";
+                dice.innerHTML = no;
+                document.getElementById("td").style.backgroundColor= "lime";
+                document.getElementById("td").style.color= "black";
+            }
+        }
+    </script>
+</body>
+</html>

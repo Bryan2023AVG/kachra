@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calc</title>
+</head>
+<body>
+    <h1>Enter 3 subject marks</h1>
+    <form name="my_form" onsubmit="return calc()">
+        Subject 1:<input type="number" name="one"><br>
+        Subject 2:<input type="number" name="two"><br>
+        Subject 3:<input type="number" name="three"><br><br>
+        <input type="submit" value="Calculate Percentage">
+    </form>
+
+    <script>
+        function calc(){
+            let check = true;
+            let n1 = document.my_form.one.value;
+            let n2 = document.my_form.two.value;
+            let n3 = document.my_form.three.value;
+
+            if(n1 == "" || n2== ""||n3==""){
+                alert("No null value accepted");
+                check = false;
+                return check;
+            }
+            if(n1 < 0|| n1>100||n2 < 0|| n2>100 || n3 < 0|| n3>100){
+                alert("Check if any value is below 0 or above 100");
+                check = false;
+                return check;
+                
+            }
+            
+            n1 = parseInt(n1);
+            n2 = parseInt(n2);
+            n3 = parseInt(n3);
+            
+            let per = (n1+n2+n3) / 3;
+            alert("Your percentage is "+per);
+            return check;
+        }
+    </script>
+</body>
+</html>
